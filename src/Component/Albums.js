@@ -22,18 +22,24 @@ class App extends Component{
 
     return(
       <div>
-          <Mui.Container><br />
-          <Mui.ButtonGroup color="primary" aria-label="outlined primary button group">
-                    <Mui.Button href="/posts">Posts</Mui.Button>
-                    <Mui.Button href="/comments">Comments</Mui.Button>
-                    <Mui.Button href="/albums">Albums</Mui.Button>
-                    <Mui.Button href="/photos">Photos</Mui.Button>
-                    <Mui.Button href="/todos">Todos</Mui.Button>
-                    <Mui.Button href="/users">Users</Mui.Button>
-                </Mui.ButtonGroup>
-        <h1 align="center">Data jsonplaceholder Albums</h1>
+          <nav>
+          
+    <div class="nav-wrapper cyan darken-4">
+      <a href="#" class="brand-logo">PLACEHOLDER</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/posts">Posts</a></li>
+        <li><a href="/comments">Comments</a></li>
+        <li><a href="/albums">Albums</a></li>
+        <li><a href="/photos">Photos</a></li>
+        <li><a href="/todos">Todos</a></li>
+        <li><a href="/users">Users</a></li>
+      </ul>
+      </div>
+    
+  </nav>
+        <h3 align="center">Data jsonplaceholder Albums</h3>
           <table border="1">
-            <tr>
+            <tr class="responsive-table card-panel teal lighten-1">
               <td>USER ID</td>
               <td>ID</td>
               <td>TITLE</td>
@@ -46,7 +52,7 @@ class App extends Component{
               </tr>
               )}
           </table>
-          </Mui.Container>
+          
       </div>
     );
   }

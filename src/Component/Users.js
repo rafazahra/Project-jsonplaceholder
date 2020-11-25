@@ -1,57 +1,82 @@
 import React, { Component } from 'react';
 import * as Mui from '@material-ui/core';
 
-class App extends Component{
-  constructor(props) {
-    super(props);
+class Users extends Component{
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+          data : [],
+        };
+      }
+    
+      componentDidMount() {
+        const apiUrl = 'https://jsonplaceholder.typicode.com/users';
+        fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => this.setState({ data: data }));
+      }
 
-    this.state = {
-      data : [],
-    };
-  }
+    render(){
+        const { data } = this.state;
 
-  componentDidMount() {
-    const apiUrl = 'https://jsonplaceholder.typicode.com/users';
-    fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => this.setState({ data: data }));
-  }
-
-  render(){
-    const { data } = this.state;
-
-    return(
-      <div>
-          <Mui.Container fixed><br />
-          <Mui.ButtonGroup color="primary" aria-label="outlined primary button group">
-                    <Mui.Button href="/posts">Posts</Mui.Button>
-                    <Mui.Button href="/comments">Comments</Mui.Button>
-                    <Mui.Button href="/albums">Albums</Mui.Button>
-                    <Mui.Button href="/photos">Photos</Mui.Button>
-                    <Mui.Button href="/todos">Todos</Mui.Button>
-                    <Mui.Button href="/users">Users</Mui.Button>
-                </Mui.ButtonGroup>
-        <h1 align="center">Data jsonplaceholder Users</h1>
-          <table border="1">
-            <tr>
-              <td>USER ID</td>
-              <td>ID</td>
-              <td>TITLE</td>
-              <td>COMPLETED</td>
-            </tr>
-            {data.map(todo =>
-              <tr hey={todo.id}>
-                <td>{todo.userId}</td>
-                <td>{todo.id}</td>
-                <td>{todo.title}</td>
-                <td>{todo.completed}</td>
-              </tr>
-              )}
-          </table>
-          </Mui.Container>
+        return(
+            <div>
+                <nav>
+          
+    <div class="nav-wrapper cyan darken-4">
+      <a href="#" class="brand-logo">PLACEHOLDER</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/posts">Posts</a></li>
+        <li><a href="/comments">Comments</a></li>
+        <li><a href="/albums">Albums</a></li>
+        <li><a href="/photos">Photos</a></li>
+        <li><a href="/todos">Todos</a></li>
+        <li><a href="/users">Users</a></li>
+      </ul>
       </div>
-    );
-  }
-}
+    
+  </nav>
+                <h3 align="center">Data jsonplaceholder Users</h3>
+                    <table border="1">
+                    <thead>
+                        <tr class="responsive-table card-panel teal lighten-1">
+                            <td>id</td>
+                            <td>name</td> 
+                            <td>username</td>
+                            <td>email</td> 
+                            <td colSpan="6" align="center">address</td>
+                            <td>phone</td>
+                            <td>website</td>
+                            <td colSpan="3" align='center'>company</td> 
+                        </tr>
+                    </thead>
+                    {data.map(todo =>
+                    <thead>
+                        <tr hey={todo.id}>
+                            <td>{todo.id}</td>
+                            <td>{todo.name}</td> 
+                            <td>{todo.username}</td>
+                            <td>{todo.email}</td> 
+                            <td>{todo.address.street}</td>     
+                            <td>{todo.address.suite}</td>
+                            <td>{todo.address.city}</td> 
+                            <td>{todo.address.zipcode}</td>
+                            <td>{todo.address.geo.lat}</td> 
+                            <td>{todo.address.geo.lng}</td>
+                            <td>{todo.phone}</td>
+                            <td>{todo.website}</td> 
+                            <td>{todo.company.name}</td>
+                            <td>{todo.company.catchPhrase}</td>
+                            <td>{todo.company.bs}</td> 
+                        </tr>
+                    </thead>
+                    )}
+                </table>
 
-export default App;
+            </div>
+        )
+    }
+}
+    
+export default Users;
